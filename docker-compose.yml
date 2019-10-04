@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  product-service:
+    container_name: product
+    build: ./product
+    volumes:
+      - ./product:/usr/src/app
+    ports:
+      - 5010:80
+
+  website:
+    container_name: website
+    build: ./website
+    volumes:
+      - ./website:/var/www/html
+    ports:
+      - 5011:80
+    depends_on:
+      - product-service
+      - database
+
+  database:
+    container_name: database
+    build: ./database
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: company
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    ports:
+      - 3306:3306
