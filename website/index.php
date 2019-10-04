@@ -12,18 +12,6 @@
 <h1>Welcome to my shop</h1>
 <ul>
     <?php
-        #phpinfo();
-        $json = file_get_contents('http://product-service');
-        $obj = json_decode($json);
-
-        $products = $obj->products;
-        foreach ($products as $product) {
-            echo "<li>$product</li>";
-        }
-    ?>
-</ul>
-<ul>
-    <?php
         $servername = "database";
         $username = "user";
         $password = "user";

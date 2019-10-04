@@ -1,14 +1,6 @@
 version: '3'
 
 services:
-  product-service:
-    container_name: product
-    build: ./product
-    volumes:
-      - ./product:/usr/src/app
-    ports:
-      - 5010:80
-
   website:
     container_name: website
     build: ./website
@@ -17,7 +9,6 @@ services:
     ports:
       - 5011:80
     depends_on:
-      - product-service
       - database
 
   database:
